@@ -8,15 +8,16 @@ using UnityEngine.UI;
 public class DownloadSpriteFromURL : MonoBehaviour
 {
     [SerializeField] private string url = "http://data.ikppbb.com/test-task-unity-data/pics/";
-    [SerializeField] private GameObject _prefabImage;
+    [SerializeField] private RectTransform _prefabImage;
 
-    private List<GameObject> _prefabsImage;
+    private List<RectTransform> _prefabs;
     private List<Sprite> _sprites;
     private SpriteRenderer _spriteRenderer;
     private int _numberSprite = 66;
     public void Start()
     {
         _sprites = new List<Sprite>();
+        _prefabs = new List<RectTransform>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         //StartCoroutine(LoadTextureFromServer(url, SetTexture));
         for (int i = 1; i <= _numberSprite; i++)
@@ -27,8 +28,14 @@ public class DownloadSpriteFromURL : MonoBehaviour
                 var sprite = Sprite.Create(response, new Rect(0, 0, response.width, response.height),
                     new Vector2(0.5f, 0.5f));
                 _sprites.Add(sprite);
-                _spriteRenderer.sprite = sprite;
+                //_spriteRenderer.sprite = sprite;
                 Debug.Log("Loaded sprite " + i);
+                var obj = Instantiate(_prefabImage, this.transform.position, Quaternion.identity);
+                _prefabs.Add(obj);
+                obj.GetComponent<Image>().sprite = sprite;
+                obj.transform.SetParent(this.transform);
+                obj.GetComponent<RectTransform>().localScale = new Vector3(1,1,1);
+                obj.name = "Image_" + i;
             }));
         }
 
@@ -59,5 +66,14 @@ public class DownloadSpriteFromURL : MonoBehaviour
     {
         Texture2D tex = texture2D;
         _spriteRenderer.sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f));
+    }
+
+    [ContextMenu("SetScale")]
+    public void SetScale()
+    {
+        foreach (var prefab in _prefabs)
+        {
+            prefab.GetComponent<RectTransform>().localScale = Vector3.one;
+        }
     }
 }
