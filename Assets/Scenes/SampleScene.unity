@@ -293,7 +293,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &902225967
 RectTransform:
   m_ObjectHideFlags: 0
@@ -561,10 +561,10 @@ RectTransform:
   m_Father: {fileID: 1201291568}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1020, y: 2000}
+  m_SizeDelta: {x: 1020, y: -300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1551492126
 MonoBehaviour:
@@ -645,8 +645,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16dd4ca19681d4248ad97daa34e44d73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  url: http://data.ikppbb.com/test-task-unity-data/pics/
-  amountSprite: 66
   prefabImage: {fileID: 1792370246233678982, guid: faf665085bb65fc42870752207fbd75b,
     type: 3}
   scrollRect: {fileID: 1551492126}
