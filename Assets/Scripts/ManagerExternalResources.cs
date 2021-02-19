@@ -8,22 +8,22 @@ using UnityEngine.UI;
 
 public class ManagerExternalResources
 {
-    private InputHandler _inputHandler;
+    private SpawnObject _spawnObject;
     private const string URL = "http://data.ikppbb.com/test-task-unity-data/pics/";
     private int amountSprite = 67;
     private int _numberLastLoadSprite = 0;
     private Coroutine _coroutine;
 
-    public ManagerExternalResources(InputHandler inputHandler)
+    public ManagerExternalResources(SpawnObject spawnObject)
     {
-        _inputHandler = inputHandler;
+        _spawnObject = spawnObject;
     }
 
     public void DownloadNextTexture2D(Action<Texture2D> response)
     {
         if (_coroutine == null && _numberLastLoadSprite < amountSprite)
         {
-            _coroutine = _inputHandler.StartCoroutine(DownloadTextureFromServer(GetNextURL(), response));
+            _coroutine = _spawnObject.StartCoroutine(DownloadTextureFromServer(GetNextURL(), response));
         }
     }
     private string GetNextURL()
