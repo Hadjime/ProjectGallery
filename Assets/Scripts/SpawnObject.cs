@@ -21,10 +21,6 @@ public class SpawnObject : MonoBehaviour
 
     private ManagerExternalResources _managerExternalResources;
     
-    public void Init(ManagerExternalResources managerExternalResources)
-    {
-        _managerExternalResources = managerExternalResources;
-    }
     private void Awake()
     {
         ObjectsImage = new List<RectTransform>();
@@ -32,7 +28,7 @@ public class SpawnObject : MonoBehaviour
         _managerExternalResources = new ManagerExternalResources(this);
     }
 
-    public void UploadImage()
+    public void Spawn()
     {
         _managerExternalResources.DownloadNextTexture2D(CreateImage);
     }

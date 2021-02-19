@@ -15,12 +15,12 @@ public class InputHandler : MonoBehaviour
     {
         if (spawnObject.scrollRect.normalizedPosition.y < 0.1f)
         {
-            spawnObject.UploadImage();
+            spawnObject.Spawn();
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            spawnObject.UploadImage();
+            spawnObject.Spawn();
         }
     }
 
