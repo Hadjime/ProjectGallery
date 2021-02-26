@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using UnityEngine.Networking;
 using UnityEngine.UI;
-using UnityNightPool;
 
 public class InputHandler : MonoBehaviour
 {
@@ -22,14 +21,6 @@ public class InputHandler : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             spawnObject.Spawn();
-            var obj = PoolManager.Get(1);
-            var corutine = StartCoroutine(WaitAndReturn(obj));
-        }
-
-        IEnumerator WaitAndReturn(PoolObject poolObject)
-        {
-            yield return new WaitForSeconds(2.0f);
-            poolObject.Return();
         }
     }
 
